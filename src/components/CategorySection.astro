@@ -1,0 +1,77 @@
+---
+import type { Category } from '../data/products';
+import { categoryMeta, productsByCategory } from '../data/products';
+import ProductCard from './ProductCard.astro';
+import Ornament from './Ornament.astro';
+
+interface Props {
+  category: Category;
+}
+const { category } = Astro.props;
+const meta = categoryMeta[category];
+const items = productsByCategory(category);
+const surfaceClass = meta.surface === 'forest' ? 'surface-forest' : 'surface-cream';
+---
+<section id={meta.slug} class={`cat ${surfaceClass}`} data-surface={meta.surface}>
+  <div class="cat__inner">
+    <header class="cat__head">
+      <span class="type-eyebrow cat__kicker" data-reveal="fade">{meta.kicker}</span>
+      <h2 class="type-display-lg cat__title" data-reveal="up-lg" style="--reveal-delay: 100ms">
+        {meta.title}
+        {meta.subtitle && <em class="cat__subtitle"> — {meta.subtitle}</em>}
+      </h2>
+      <span class="cat__ornament" data-reveal="fade" style="--reveal-delay: 200ms">
+        <Ornament variant="sprig" />
+      </span>
+    </header>
+
+    <div class="cat__grid">
+      {items.map((p, i) => <ProductCard product={p} index={i} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .cat {
+    padding: clamp(72px, 10vw, 128px) clamp(20px, 4vw, 40px);
+    position: relative;
+    isolation: isolate;
+  }
+  .cat__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .cat__head {
+    text-align: center;
+    margin-bottom: clamp(48px, 7vw, 96px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .cat__kicker {
+    color: var(--color-gold-500);
+  }
+  .cat[data-surface="forest"] .cat__title { color: var(--color-cream-50); }
+  .cat[data-surface="cream"]  .cat__title { color: var(--color-cocoa-900); }
+  .cat__subtitle {
+    font-style: italic;
+    font-weight: 300;
+    opacity: 0.7;
+  }
+  .cat__ornament {
+    color: var(--color-gold-500);
+    opacity: 0.7;
+  }
+
+  .cat__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(20px, 3vw, 32px);
+  }
+  @media (min-width: 640px)  { .cat__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .cat__grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1300px) { .cat__grid { grid-template-columns: repeat(4, 1fr); } }
+</style>

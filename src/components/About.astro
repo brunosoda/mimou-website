@@ -1,0 +1,122 @@
+---
+import Ornament from './Ornament.astro';
+---
+<section class="about surface-cream" id="sobre">
+  <div class="about__inner">
+    <div class="about__frame" data-reveal="scale">
+      <img src="/products/cafe-com-afeto.jpg" alt="Cesta artesanal Mimou" loading="lazy" />
+      <div class="about__stamp">
+        <svg viewBox="0 0 80 80">
+          <circle cx="40" cy="40" r="36" fill="none" stroke="#A6884D" stroke-width="0.5"/>
+          <text x="40" y="38" font-family="Cormorant Garamond" font-size="8" fill="#4A3223" text-anchor="middle" font-style="italic">amitié</text>
+          <text x="40" y="48" font-family="Cormorant Garamond" font-size="6" fill="#A6884D" text-anchor="middle">M · SP</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="about__copy">
+      <span class="type-eyebrow about__kicker" data-reveal="fade">Nossa história</span>
+      <h2 class="type-display-lg about__title" data-reveal="up-lg" style="--reveal-delay: 100ms">
+        Cada presente é <em>uma pequena carta</em> que a gente escreve <em>com flores, doces e afeto</em>.
+      </h2>
+
+      <span class="about__divider" data-reveal="fade" style="--reveal-delay: 200ms">
+        <Ornament variant="diamond" />
+      </span>
+
+      <p class="type-lead about__body" data-reveal style="--reveal-delay: 260ms">
+        A Mimou nasceu em São Paulo do desejo de transformar gestos simples em memórias.
+        Cada cesta, buquê e mimo é montado à mão, aqui perto de você, escolhendo com cuidado
+        cada fita, cada flor e cada docinho — para que o presente chegue como uma história pronta
+        para ser contada.
+      </p>
+
+      <p class="about__body about__body--small" data-reveal style="--reveal-delay: 320ms">
+        Inspiração vem das ruas de Paris, dos filmes que a gente ama e das pequenas felicidades
+        do dia. Nossa promessa é entregar sempre com o mesmo carinho com que faríamos para alguém
+        muito próximo.
+      </p>
+
+      <p class="about__signature font-script" data-reveal style="--reveal-delay: 380ms">
+        Bem-vindo à nossa mesa de trabalho.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: clamp(80px, 12vw, 160px) clamp(20px, 4vw, 40px);
+  }
+  .about__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(48px, 6vw, 80px);
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .about__inner { grid-template-columns: 1fr 1.1fr; }
+  }
+  .about__frame {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 4px;
+    overflow: hidden;
+    max-width: 460px;
+    justify-self: center;
+    width: 100%;
+    box-shadow: 0 40px 80px -30px rgb(60 40 20 / 0.35);
+    border: 6px solid var(--color-cream-50);
+    outline: 1px solid color-mix(in oklab, var(--color-cocoa-500) 20%, transparent);
+  }
+  .about__frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: sepia(0.06) saturate(0.98);
+  }
+  .about__stamp {
+    position: absolute;
+    right: -18px;
+    bottom: -18px;
+    width: 80px;
+    height: 80px;
+    background: var(--color-cream-50);
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    transform: rotate(8deg);
+    box-shadow: 0 8px 24px -12px rgb(60 40 20 / 0.4);
+    border: 1px solid color-mix(in oklab, var(--color-gold-500) 40%, transparent);
+  }
+
+  .about__copy { color: var(--color-cocoa-900); }
+  .about__kicker { color: var(--color-gold-500); display: block; margin-bottom: 20px; }
+  .about__title {
+    margin-bottom: 8px;
+  }
+  .about__title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-cocoa-700);
+  }
+  .about__divider { display: inline-block; color: var(--color-gold-500); margin: 28px 0 20px; }
+  .about__body {
+    color: var(--color-cocoa-700);
+    max-width: 54ch;
+  }
+  .about__body--small {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-top: 18px;
+    opacity: 0.85;
+  }
+  .about__signature {
+    color: var(--color-amelie-700);
+    margin-top: 28px;
+    font-size: 22px;
+  }
+</style>

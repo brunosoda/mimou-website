@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ValueStrip from '../components/ValueStrip.astro';
+import CategorySection from '../components/CategorySection.astro';
+import About from '../components/About.astro';
+import Delivery from '../components/Delivery.astro';
+import Footer from '../components/Footer.astro';
+import FloatingCTA from '../components/FloatingCTA.astro';
+---
+<BaseLayout>
+  <Header />
+  <main>
+    <Hero />
+    <ValueStrip />
+    <CategorySection category="ofertas" />
+    <CategorySection category="signature" />
+    <CategorySection category="buques" />
+    <CategorySection category="cestas" />
+    <CategorySection category="aniversario" />
+    <About />
+    <Delivery />
+  </main>
+  <Footer />
+  <FloatingCTA />
+</BaseLayout>

@@ -1,0 +1,81 @@
+---
+import type { Product } from '../data/products';
+import { formatPrice } from '../data/products';
+import { whatsappLink } from '../data/config';
+
+interface Props {
+  product: Product;
+  index?: number;
+}
+const { product, index = 0 } = Astro.props;
+
+const priceLabel = product.priceFrom ? 'A partir de' : '';
+const hasImage = Boolean(product.image);
+
+const msg =
+  `Olá, Mimou! Gostaria de encomendar o presente:\n\n` +
+  `▪ ${product.name}\n` +
+  `▪ Valor: R$ ${formatPrice(product.price)}\n\n` +
+  `Poderia me ajudar com prazos e formas de pagamento?`;
+const ctaHref = whatsappLink(msg);
+
+const isPromo = Boolean(product.priceOld);
+---
+<article
+  class={`card ${hasImage ? '' : 'card--placeholder'}`}
+  data-reveal
+  data-product-slug={product.slug}
+  data-product-name={product.name}
+  style={`--reveal-delay: ${(index % 3) * 90}ms`}
+>
+  {isPromo && <span class="card__tag">Oferta</span>}
+  <div class="card__media">
+    {hasImage && (
+      <img src={product.image} alt={product.name} loading="lazy" decoding="async" />
+    )}
+    {!hasImage && (
+      <div class="card__placeholder-note">
+        <span class="type-eyebrow">Novidade</span>
+      </div>
+    )}
+  </div>
+  <div class="card__body">
+    <h3 class="card__title">{product.name}</h3>
+    <p class="card__desc">{product.description}</p>
+    <div class="card__foot">
+      <div class="card__price">
+        {priceLabel && <span class="card__price-label">{priceLabel}</span>}
+        <span class="card__price-current">R$ {formatPrice(product.price)}</span>
+        {product.priceOld && (
+          <span class="card__price-old">R$ {formatPrice(product.priceOld)}</span>
+        )}
+      </div>
+      <a href={ctaHref} target="_blank" rel="noopener" class="card__cta" aria-label={`Encomendar ${product.name} pelo WhatsApp`}>
+        Encomendar
+        <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .card__placeholder-note {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: end center;
+    padding-bottom: 24px;
+    z-index: 1;
+    color: var(--color-cocoa-500);
+  }
+  .card__price-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-cocoa-500);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+</style>
