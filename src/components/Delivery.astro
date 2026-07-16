@@ -12,6 +12,10 @@ import { brand } from '../data/config';
         Entregamos em toda a capital, com combinação prévia por WhatsApp. Consulte o valor
         do frete para o seu bairro — para alguns endereços, retirada no estúdio também é possível.
       </p>
+      <p class="type-body delivery__body delivery__body--note" data-reveal style="--reveal-delay: 300ms">
+        Para aniversários, fazemos <a href="#como-funciona" class="delivery__note-link">entrega
+        surpresa à meia-noite</a> com taxa adicional.
+      </p>
     </div>
 
     <ul class="delivery__list" data-reveal style="--reveal-delay: 300ms">
@@ -54,6 +58,19 @@ import { brand } from '../data/config';
     margin-top: 20px;
     max-width: 40ch;
   }
+  .delivery__body--note {
+    margin-top: 14px;
+    font-size: 14px;
+    color: color-mix(in oklab, var(--color-cream-100) 75%, transparent);
+  }
+  .delivery__note-link {
+    color: var(--color-blush-200);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: color-mix(in oklab, var(--color-blush-200) 50%, transparent);
+    transition: color 200ms ease;
+  }
+  .delivery__note-link:hover { color: var(--color-cream-50); }
   .delivery__list {
     list-style: none;
     padding: 0;

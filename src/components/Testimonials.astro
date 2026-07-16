@@ -1,0 +1,262 @@
+---
+import Ornament from './Ornament.astro';
+
+// NOTA: depoimentos e números abaixo são exemplos ilustrativos (placeholder).
+// Substitua por avaliações reais de clientes antes de divulgar o site.
+const stats = [
+  { value: '500+', label: 'presentes entregues' },
+  { value: '4,9', label: 'avaliação média', star: true },
+  { value: '9 em 10', label: 'clientes indicam a amigos' },
+];
+
+const testimonials = [
+  {
+    quote:
+      'Pedi a surpresa da meia-noite para o aniversário do meu namorado. Quando ele abriu a porta e viu o buquê com a rosa de LED acesa, não acreditou. Choramos os dois.',
+    name: 'Mariana',
+    where: 'Vila Mariana',
+    product: 'Buquê Coreano com Rosa Led e Ursinho',
+  },
+  {
+    quote:
+      'Atendimento incrível pelo WhatsApp. Montaram uma cesta personalizada em um dia e ela chegou pontualmente, no horário combinado. Virei cliente.',
+    name: 'Rafael',
+    where: 'Moema',
+    product: 'Cesta Presente Premium',
+  },
+  {
+    quote:
+      'A cesta de café da manhã chegou linda, cheirosa e com um cartãozinho escrito à mão. Minha mãe amou cada detalhe — e eu também.',
+    name: 'Camila',
+    where: 'Pinheiros',
+    product: 'Cesta Café da Manhã Clássica',
+  },
+  {
+    quote:
+      'Já é a terceira vez que encomendo. A embalagem é tão delicada que dá pena de abrir. Qualidade impecável, sempre.',
+    name: 'Juliana',
+    where: 'Jardins',
+    product: 'Mimou Signature',
+  },
+  {
+    quote:
+      'Esqueci a data e precisava de um presente para o mesmo dia. Me salvaram: o buquê do Stitch foi entregue em poucas horas, perfeito.',
+    name: 'Pedro',
+    where: 'Brooklin',
+    product: 'Buquê Stitch com Rosas Vermelhas',
+  },
+  {
+    quote:
+      'A capivara de pelúcia com chocolates foi o presente mais comentado da festa. Original demais — todo mundo pediu o contato da Mimou.',
+    name: 'Larissa',
+    where: 'Vila Madalena',
+    product: 'Cesta Presente Capivara',
+  },
+];
+---
+<section class="social surface-forest" id="depoimentos">
+  <div class="social__inner">
+    <header class="social__head">
+      <span class="type-eyebrow social__kicker" data-reveal="fade">Depoimentos</span>
+      <h2 class="type-display-lg social__title" data-reveal="up-lg" style="--reveal-delay: 100ms">
+        Quem presenteia com a Mimou, <em>volta</em>.
+      </h2>
+      <span class="social__ornament" data-reveal="fade" style="--reveal-delay: 200ms">
+        <Ornament variant="sprig" />
+      </span>
+    </header>
+
+    <ul class="social__stats" data-reveal style="--reveal-delay: 260ms">
+      {stats.map((s) => (
+        <li class="social__stat">
+          <span class="social__stat-value font-display">
+            {s.value}
+            {s.star && (
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" class="social__stat-star">
+                <path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/>
+              </svg>
+            )}
+          </span>
+          <span class="social__stat-label">{s.label}</span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="social__grid">
+      {testimonials.map((t, i) => (
+        <figure class="social__card" data-reveal style={`--reveal-delay: ${120 + (i % 3) * 110}ms`}>
+          <div class="social__stars" role="img" aria-label="Avaliação: 5 de 5 estrelas">
+            {Array.from({ length: 5 }).map(() => (
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/>
+              </svg>
+            ))}
+          </div>
+          <blockquote class="social__quote font-display">
+            “{t.quote}”
+          </blockquote>
+          <figcaption class="social__who">
+            <span class="social__avatar font-display" aria-hidden="true">{t.name.charAt(0)}</span>
+            <span class="social__who-text">
+              <span class="social__name">{t.name} · {t.where}</span>
+              <span class="social__product">{t.product}</span>
+            </span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <p class="social__foot type-small" data-reveal>
+      Depoimentos enviados por clientes pelo WhatsApp e Instagram.
+    </p>
+  </div>
+</section>
+
+<style>
+  .social {
+    padding: clamp(72px, 10vw, 128px) clamp(20px, 4vw, 40px);
+    position: relative;
+    isolation: isolate;
+  }
+  .social__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .social__head {
+    text-align: center;
+    margin-bottom: clamp(36px, 5vw, 64px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .social__kicker { color: var(--color-gold-400); }
+  .social__title { color: var(--color-cream-50); }
+  .social__title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--color-blush-200);
+  }
+  .social__ornament { color: var(--color-gold-400); opacity: 0.7; }
+
+  .social__stats {
+    list-style: none;
+    margin: 0 auto clamp(48px, 6vw, 72px);
+    padding: 24px clamp(16px, 3vw, 48px);
+    max-width: 880px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    border-top: 1px solid color-mix(in oklab, var(--color-cream-100) 18%, transparent);
+    border-bottom: 1px solid color-mix(in oklab, var(--color-cream-100) 18%, transparent);
+  }
+  @media (min-width: 640px) {
+    .social__stats { grid-template-columns: repeat(3, 1fr); }
+  }
+  .social__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+  }
+  .social__stat-value {
+    font-size: clamp(1.75rem, 3vw, 2.375rem);
+    font-weight: 500;
+    color: var(--color-cream-50);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    line-height: 1;
+  }
+  .social__stat-star { color: var(--color-gold-400); transform: translateY(1px); }
+  .social__stat-label {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: color-mix(in oklab, var(--color-cream-100) 75%, transparent);
+  }
+
+  .social__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(16px, 2.5vw, 28px);
+  }
+  @media (min-width: 640px)  { .social__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1000px) { .social__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+  .social__card {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: clamp(24px, 3vw, 34px);
+    background: color-mix(in oklab, var(--color-cream-100) 6%, transparent);
+    border: 1px solid color-mix(in oklab, var(--color-cream-100) 14%, transparent);
+    border-radius: var(--radius);
+    transition: border-color 300ms ease, background 300ms ease, transform 500ms cubic-bezier(.2,.7,.2,1);
+  }
+  .social__card:hover {
+    border-color: color-mix(in oklab, var(--color-gold-400) 45%, transparent);
+    background: color-mix(in oklab, var(--color-cream-100) 9%, transparent);
+    transform: translateY(-3px);
+  }
+  .social__stars {
+    display: flex;
+    gap: 3px;
+    color: var(--color-gold-400);
+  }
+  .social__quote {
+    font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
+    line-height: 1.5;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-cream-100);
+    flex: 1;
+  }
+  .social__who {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid color-mix(in oklab, var(--color-cream-100) 12%, transparent);
+  }
+  .social__avatar {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-forest-900);
+    background: var(--color-blush-200);
+  }
+  .social__who-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .social__name {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-cream-50);
+  }
+  .social__product {
+    font-size: 12px;
+    color: color-mix(in oklab, var(--color-cream-100) 60%, transparent);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .social__foot {
+    margin-top: clamp(28px, 4vw, 44px);
+    text-align: center;
+    color: color-mix(in oklab, var(--color-cream-100) 50%, transparent);
+    font-style: italic;
+  }
+</style>

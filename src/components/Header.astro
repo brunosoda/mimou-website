@@ -1,24 +1,34 @@
 ---
 import Wordmark from './Wordmark.astro';
 import { brand, whatsappLink } from '../data/config';
-const nav = [
-  { label: 'Início',           href: '#top' },
+// Nav dividida dos dois lados do logo central; "Início" fica só no menu
+// mobile — no desktop o logo já leva ao topo.
+const navLeft = [
   { label: 'Ofertas',          href: '#ofertas' },
   { label: 'Buquês',           href: '#buques' },
   { label: 'Cestas',           href: '#cestas' },
   { label: 'Mimou Signature',  href: '#signature' },
+];
+const navRight = [
+  { label: 'Como Funciona',    href: '#como-funciona' },
   { label: 'Sobre Nós',        href: '#sobre' },
 ];
+const mobileNav = [{ label: 'Início', href: '#top' }, ...navLeft, ...navRight];
 ---
 <header class="site-header" id="site-header">
   <div class="site-header__inner">
     <nav class="site-header__nav" aria-label="Principal">
-      {nav.map((item) => (
+      {navLeft.map((item) => (
         <a href={item.href} class="site-header__link">{item.label}</a>
       ))}
     </nav>
     <div class="site-header__logo"><Wordmark /></div>
     <div class="site-header__actions">
+      <nav class="site-header__nav site-header__nav--right" aria-label="Seções">
+        {navRight.map((item) => (
+          <a href={item.href} class="site-header__link">{item.label}</a>
+        ))}
+      </nav>
       <a
         href={whatsappLink('Olá! Gostaria de saber mais sobre os presentes da Mimou.')}
         target="_blank"
@@ -53,7 +63,7 @@ const nav = [
   </div>
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Menu">
-    {nav.map((item) => (
+    {mobileNav.map((item) => (
       <a href={item.href} class="mobile-nav__link">{item.label}</a>
     ))}
     <a
@@ -95,8 +105,14 @@ const nav = [
 
   .site-header__nav {
     display: none;
-    gap: 28px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 24px;
     color: var(--color-cocoa-900);
+  }
+  .site-header__nav--right {
+    justify-content: flex-end;
+    margin-right: 12px;
   }
   .site-header__link {
     font-family: var(--font-body);
