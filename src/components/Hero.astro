@@ -140,6 +140,16 @@ import { whatsappLink } from '../data/config';
   .hero__blossom--tl { top: -80px; left: -80px; }
   .hero__blossom--br { bottom: -80px; right: -80px; }
 
+  @media (max-width: 640px) {
+    .hero__blossom {
+      width: min(50vw, 240px);
+      height: min(50vw, 240px);
+      opacity: 0.4;
+    }
+    .hero__blossom--tl { top: -40px; left: -40px; }
+    .hero__blossom--br { bottom: -40px; right: -40px; }
+  }
+
   .hero__copy { color: var(--color-cream-100); }
   .hero__eyebrow {
     display: inline-flex;
@@ -175,6 +185,15 @@ import { whatsappLink } from '../data/config';
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+  }
+  @media (max-width: 640px) {
+    .hero__ctas {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hero__ctas .btn {
+      width: 100%;
+    }
   }
   .hero__signature {
     margin-top: 32px;
@@ -252,6 +271,15 @@ import { whatsappLink } from '../data/config';
     transform: rotate(-12deg);
     opacity: 0.85;
     animation: hero-stamp-in 800ms cubic-bezier(0.22, 1, 0.36, 1) 750ms both;
+  }
+  @media (max-width: 640px) {
+    .hero__stamp {
+      width: 72px;
+      height: 72px;
+      right: -6px;
+      top: -6px;
+      opacity: 0.7;
+    }
   }
 
   @keyframes hero-arch-in {

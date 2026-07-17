@@ -52,7 +52,7 @@ import { brand, whatsappLink } from '../data/config';
 </footer>
 
 <style>
-  .foot { padding: clamp(64px, 10vw, 120px) clamp(20px, 4vw, 40px) 32px; }
+  .foot { padding: clamp(48px, 10vw, 120px) clamp(16px, 4vw, 40px) 28px; }
   .foot__inner {
     position: relative;
     z-index: 1;
@@ -78,9 +78,15 @@ import { brand, whatsappLink } from '../data/config';
   }
   .foot__cols {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: clamp(24px, 5vw, 40px);
     color: var(--color-cream-100);
+  }
+  @media (max-width: 640px) {
+    .foot__cols {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
   }
   .foot__col-title {
     color: var(--color-gold-400);
@@ -92,7 +98,7 @@ import { brand, whatsappLink } from '../data/config';
     display: block;
     color: color-mix(in oklab, var(--color-cream-100) 90%, transparent);
     text-decoration: none;
-    font-size: 14px;
+    font-size: clamp(13px, 2.5vw, 14px);
     line-height: 1.7;
     transition: color 200ms ease;
   }
