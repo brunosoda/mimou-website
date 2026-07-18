@@ -478,3 +478,49 @@ body {
   outline-offset: 3px;
   border-radius: 2px;
 }
+
+/* ============================================================
+   Mobile responsive fixes
+   ============================================================ */
+
+@media (max-width: 640px) {
+  /* Reduce SVG sizes on mobile */
+  svg[viewBox] {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Reduce decorative SVG sizes */
+  .hero__blossom {
+    width: min(40vw, 200px) !important;
+    height: min(40vw, 200px) !important;
+  }
+
+  /* Reduce button sizes on mobile */
+  .btn {
+    padding: 12px 20px;
+    font-size: 11px;
+  }
+
+  /* Reduce card padding on mobile */
+  .card__body {
+    padding: 16px !important;
+  }
+
+  .card__title {
+    font-size: 18px;
+  }
+
+  /* Reduce text sizes for better mobile spacing */
+  .type-display-xl {
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+  }
+
+  .type-display-lg {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+  }
+
+  .type-display-md {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  }
+}
