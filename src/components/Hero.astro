@@ -1,6 +1,6 @@
 ---
 import Ornament from './Ornament.astro';
-import { whatsappLink } from '../data/config';
+import { whatsappLink, asset } from '../data/config';
 ---
 <section class="hero surface-forest" id="top">
   <!-- Decorative cherry blossom SVG in the corners -->
@@ -79,7 +79,7 @@ import { whatsappLink } from '../data/config';
 
       <div class="hero__frame">
         <img
-          src="/products/cesta-aniversario-hero.png"
+          src={asset('/products/cesta-aniversario-hero.png')}
           alt="Cesta de aniversário Mimou com ursinho, balão de coração e chocolates"
           loading="eager"
           fetchpriority="high"

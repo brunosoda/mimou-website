@@ -1,10 +1,11 @@
 ---
 import Ornament from './Ornament.astro';
+import { asset } from '../data/config';
 ---
 <section class="about surface-cream" id="sobre">
   <div class="about__inner">
     <div class="about__frame" data-reveal="scale">
-      <img src="/products/cafe-com-afeto.jpg" alt="Cesta artesanal Mimou" loading="lazy" />
+      <img src={asset('/products/cafe-com-afeto.jpg')} alt="Cesta artesanal Mimou" loading="lazy" />
       <div class="about__stamp">
         <svg viewBox="0 0 80 80">
           <circle cx="40" cy="40" r="36" fill="none" stroke="#A6884D" stroke-width="0.5"/>

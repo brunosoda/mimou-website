@@ -18,3 +18,8 @@ export const brand = {
 export function whatsappLink(message: string): string {
   return `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(message)}`;
 }
+
+/** Prefixes a root-absolute asset path with the configured base (GitHub Pages subpath). */
+export function asset(path: string): string {
+  return import.meta.env.BASE_URL.replace(/\/$/, '') + path;
+}

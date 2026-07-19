@@ -1,7 +1,7 @@
 ---
 import type { Product } from '../data/products';
 import { formatPrice } from '../data/products';
-import { whatsappLink } from '../data/config';
+import { whatsappLink, asset } from '../data/config';
 
 interface Props {
   product: Product;
@@ -31,7 +31,7 @@ const isPromo = Boolean(product.priceOld);
   {isPromo && <span class="card__tag">Oferta</span>}
   <div class="card__media">
     {hasImage && (
-      <img src={product.image} alt={product.name} loading="lazy" decoding="async" />
+      <img src={asset(product.image!)} alt={product.name} loading="lazy" decoding="async" />
     )}
     {!hasImage && (
       <div class="card__placeholder-note">

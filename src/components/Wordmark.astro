@@ -14,13 +14,14 @@ interface Props {
   compact?: boolean;
   color?: string;
 }
+import { asset } from '../data/config';
 const { variant = 'mark', compact = false, color } = Astro.props;
 const inkStyle = color ? `color: ${color};` : '';
 ---
 {variant === 'full' ? (
   <a href="#top" class="brandmark brandmark--full" aria-label="Mimou Presentes e Cestas">
     <img
-      src="/img/logo-mimou.png"
+      src={asset('/img/logo-mimou.png')}
       alt="Mimou Presentes e Cestas"
       width="640"
       height="640"
