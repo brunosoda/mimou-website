@@ -396,21 +396,20 @@ body {
 
 .float-cta {
   position: fixed;
-  right: clamp(16px, 3vw, 32px);
-  bottom: clamp(16px, 3vw, 32px);
+  right: 16px;
+  bottom: 16px;
   z-index: 60;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 22px 12px 14px;
+  gap: 10px;
+  padding: 14px 18px;
   background: #128C4E;
   color: var(--color-cream-50);
   border-radius: var(--radius-pill);
   box-shadow: 0 18px 40px -12px rgb(18 60 30 / 0.5);
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: 0.02em;
   text-decoration: none;
   transform: translateY(120%);
   opacity: 0;
@@ -418,45 +417,15 @@ body {
               opacity 400ms ease,
               background 300ms ease;
   will-change: transform;
-  max-width: min(360px, calc(100vw - 32px));
 }
 .float-cta.is-visible {
   transform: none;
   opacity: 1;
 }
 .float-cta:hover { background: #0F7A44; }
-.float-cta__icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.15);
-  display: grid;
-  place-items: center;
+.float-cta svg {
   flex-shrink: 0;
 }
-.float-cta__label {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-  min-width: 0;
-}
-.float-cta__eyebrow {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  opacity: 0.8;
-  font-weight: 500;
-}
-.float-cta__title {
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: opacity 250ms ease;
-}
-.float-cta__title.is-changing { opacity: 0; }
 
 /* ============================================================
    Hairlines / dividers
